@@ -19,3 +19,55 @@ const average = function(a, b) {
 
 const result = average(2, 5)
     // result is 3.5
+
+const course = {
+    name: 'Half Stack application development',
+    parts: [
+        {
+        name: 'Fundamentals of React',
+        exercises: 10
+        },
+        {
+        name: 'Using props to pass data',
+        exercises: 7
+        },
+        {
+        name: 'State of a component',
+        exercises: 14
+        }
+    ]
+    }
+    console.log(course.parts[0].name)
+    console.log(course.parts.length)
+
+
+const arto = {
+    name: 'Arto Hellas',
+    age: 35,
+    education: 'PhD',
+    greet: function(){
+        console.log('Hello, my name is '+this.name)
+    },
+    doAddition: function(a,b){
+        console.log(a+b)
+    }
+}
+arto.greet()
+arto.growOlder = function(){
+    this.age += 1
+}
+
+console.log(arto.age)
+arto.growOlder()
+console.log(arto.age)
+
+arto.doAddition(1,4)
+
+const referenceToAddition = arto.doAddition
+referenceToAddition(10,15)
+
+arto.greet()
+const referenceToGreet = arto.greet
+referenceToGreet() //nothing will be printed as we lose track of 'this'
+
+setTimeout(arto.greet.bind(arto), 1000) //this 'bind' is the way to preserve original 'this'
