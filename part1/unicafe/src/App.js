@@ -1,17 +1,36 @@
 import { useState } from 'react'
 
-
-
 const Button = (props) => (
     <button onClick={props.handleClick}>{props.text}</button>
 )
 
+const StatisticLine = (props) => (
+  <div>{props.text} {props.value}</div>
+)
 
+
+const Statistics = (props) => {
+  console.log(props.all)
+  if (props.all === 0) {
+    return(
+      <div>No feedback given</div>
+    )
+  }
+  return(
+    <div>
+      <StatisticLine text="good" value={props.good}/>
+      <StatisticLine text="neutral" value={props.neutral}/>
+      <StatisticLine text="bad" value={props.bad}/>
+      <StatisticLine text="all" value={props.all}/>
+      <StatisticLine text="average" value={props.average}/>
+      <StatisticLine text="positive" value={props.positive+" %"}/>
+    </div>
+  )
+}
 
 
 
 const App = () => {
-  // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
@@ -20,37 +39,37 @@ const App = () => {
   const [positive, setPositive] = useState(0)
 
   const handleGood = () => {
-    setGood(good+1)
-    setAll(all+1)
-    setAverage(average+1)
-    setPositive((good/all)*100)
+    const updatedGood = good + 1
+    const updatedAll = updatedGood + neutral + bad
+    setGood(updatedGood)
+    setAll(updatedAll)
+    setAverage((updatedGood-bad)/updatedAll)
+    setPositive((updatedGood/updatedAll)*100)
   } 
   const handleNeutral = () => {
-    setNeutral(neutral+1)
-    setAll(all+1)
-    setPositive((good/all)*100)
+    const updatedNeutral = neutral + 1
+    const updatedAll = updatedNeutral + good + bad
+    setNeutral(updatedNeutral)
+    setAll(updatedAll)
+    setPositive((good/updatedAll)*100)
   }
   const handleBad = () => {
-    setBad(bad+1)
-    setAll(all+1)
-    setAverage(average-1)
-    setPositive((good/all)*100)
+    const updatedBad = bad + 1
+    const updatedAll = updatedBad + good + neutral
+    setBad(updatedBad)
+    setAll(updatedAll)
+    setAverage((good-updatedBad)/updatedAll)
+    setPositive((good/updatedAll)*100)
   }
-
 
   return (
     <div>
       <h1>get feedback</h1>
-      <Button handleClick={()=>setGood(good+1)} text='good'/><br/>
-      <Button handleClick={()=>setNeutral(neutral+1)} text='neutral'/><br/>
-      <Button handleClick={()=>setBad(bad+1)} text='bad'/>
+      <Button handleClick={handleGood} text='good'/><br/>
+      <Button handleClick={handleNeutral} text='neutral'/><br/>
+      <Button handleClick={handleBad} text='bad'/>
       <h1>statistics</h1>
-      <div>good {good}</div>
-      <div>neutral {neutral}</div>
-      <div>bad {bad}</div>
-      <div>all {all}</div>
-      <div>average {average}</div>
-      <div>positive {positive} %</div>
+      <Statistics all={all} good={good} neutral={neutral} bad={bad} average={average} positive={positive}/>
     </div>
   )
 }
