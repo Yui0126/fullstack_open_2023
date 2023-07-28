@@ -159,10 +159,3 @@ const App = () => {
     )
 }
 
-
-{<div>good {good}</div>
-<div>neutral {neutral}</div>
-<div>bad {bad}</div>
-<div>all {all}</div>
-<div>average {average}</div>
-<div>positive {positive} %</div>}
