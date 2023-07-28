@@ -29,7 +29,6 @@ const App = () => {
   const voteAnecdote = () => {
     points[selected] += 1
     console.log(points)
-
   }
 
 
