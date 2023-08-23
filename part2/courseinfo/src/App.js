@@ -7,6 +7,9 @@ const Course = ({course}) => {
   const names = parts.map(cns => cns.map(cn => cn.name))
   console.log(names[0])
 
+  const nm = course.map(cnms => cnms.parts.name)
+  console.log(nm)
+
   for(var i = 0; i < parts.length; i++){
     var cns = Array()
     cns.push(parts[i])
@@ -30,8 +33,8 @@ const Course = ({course}) => {
   return(
     <div>
     <h1 key={course.id}>{course.map(names => names.name)}</h1>
-    <div ket={parts.name}>
-      <div>{parts.map(cns => cns.name)}</div>
+    <div ket={course.name}>
+      <div>{}</div>
     </div>
     </div>
   )
