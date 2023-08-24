@@ -147,3 +147,40 @@ const App = () => {
 }
 
 export default App
+
+
+///
+const pets = [
+    {
+      name: "Bob",
+      species: "Dog",
+      Age: 8,
+      food: [
+        {main: "meat",
+         snack: "biscuits"
+        }
+      ]  
+    },
+    {
+      name: "Sam",
+      species: "Cat",
+      Age: 6,
+      food: [
+        {main: "fish",
+         snack: "cheese"
+        }
+      ]
+    }
+  ]
+  console.log(pets.map(names => names.name))
+  // console.log(pets.map(foods => foods.food.map(mains => mains.main)))
+
+  const foods = pets.map((foods) => foods.food)
+  // console.log(foods.map(mains => mains.main))
+  console.log(foods.map(mains => mains[0].main))
+
+
+
+    // const total = course.reduce(function(sum, parts) {
+  //   return sum + parts.exercises
+  // }, 0)
