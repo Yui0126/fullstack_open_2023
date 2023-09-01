@@ -22,7 +22,9 @@ const App = () => {
     event.preventDefault()
     console.log('button clicked', event.target)
     setNewName(event.target.value)
-    console.log(newName)
+    persons.filter(person => person.name === newName)
+    ? console.log('exists')
+    : console.log('does not exist')
   }
 
   return (
