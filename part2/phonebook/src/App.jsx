@@ -39,6 +39,7 @@ const App = () => {
   const [searchName, setSearchName] = useState('') 
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
+  const [filteredPersons, setFilteredPersons] = useState([])
 
   const addPhonebook = (event) => {
     event.preventDefault()
@@ -78,11 +79,12 @@ const App = () => {
 
   const nameFilter = (event) => {
     event.preventDefault()
-    setSearchName(event.target.value)
-    const snms = persons.filter(function(nam){
-      return nam.name.toLowerCase().includes(searchName.toLowerCase())
-    })
-    console.log(snms)
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchName(searchTerm)
+    const filtered = persons.filter((person) =>
+    person.name.toLocaleLowerCase().includes(searchTerm)
+    )
+    setFilteredPersons(filtered)
   }
 
 
@@ -104,7 +106,7 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <div>
-      <Persons person={persons}/>
+      <Persons person={filteredPersons.length > 0 ? filteredPersons : persons}/>
       </div>
     </div>
   )
