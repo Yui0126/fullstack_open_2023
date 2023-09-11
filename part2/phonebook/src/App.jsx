@@ -1,17 +1,13 @@
 import { useState } from 'react'
 
-const Filter = (props) => {
-  const handleSearchName = (event) => {
-    event.preventDefault()
-    const nms = persons.map(nm => nm.name)
-    if(nms.includes(searchName)){
-      return(
-        <div>Found the name!</div>
-      )
-    }
-  }
-
-}
+// const Filter = (props) => {
+// const filteredNames
+//   return(
+//     <div>
+//       <input value={props.name} onChange={props.handleFilter}/>
+//     </div>
+//   ) 
+// }
 
 const PersonForm = () => {
 
@@ -43,8 +39,6 @@ const App = () => {
   const [searchName, setSearchName] = useState('') 
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
-
-
 
   const addPhonebook = (event) => {
     event.preventDefault()
@@ -82,12 +76,21 @@ const App = () => {
     setNewPhone(event.target.value)
   }
 
+  const nameFilter = (event) => {
+    event.preventDefault()
+    setSearchName(event.target.value)
+    const snms = persons.filter(function(nam){
+      return nam.name.toLowerCase().includes(searchName.toLowerCase())
+    })
+    console.log(snms)
+  }
+
 
   return (
     <div>
       <h2>Phonebook</h2>
       <div>
-        <Filter onChange={handleSearchName}/>
+        filter shown with <input value={searchName} onChange={nameFilter}/>
       </div>
       <h2>add a new</h2>
       <form onSubmit={addPhonebook}>
