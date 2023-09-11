@@ -184,3 +184,71 @@ const pets = [
     // const total = course.reduce(function(sum, parts) {
   //   return sum + parts.exercises
   // }, 0)
+
+
+
+//fyi
+// import { useState } from 'react';
+
+// const App = () => {
+//   const [persons, setPersons] = useState([{ name: 'Arto Hellas' }]);
+//   const [newName, setNewName] = useState('');
+//   const [newPhone, setNewPhone] = useState('');
+//   const [nameExists, setNameExists] = useState(false); // Track name existence
+
+//   const handleNameChange = (event) => {
+//     const newNameValue = event.target.value;
+//     setNewName(newNameValue);
+
+//     // Check if the newName already exists in the persons array
+//     const exists = persons.some(person => person.name === newNameValue);
+//     setNameExists(exists);
+//   };
+
+//   const addName = (event) => {
+//     event.preventDefault();
+
+//     // Check if the name already exists before adding it
+//     if (nameExists) {
+//       alert(`${newName} is already in the list :o`);
+//       return;
+//     }
+
+//     const nameObject = {
+//       name: newName,
+//       id: persons.length + 1,
+//     };
+
+//     setPersons(persons.concat(nameObject));
+//     setNewName('');
+//   };
+
+//   return (
+//     <div>
+//       <h2>Phonebook</h2>
+//       <form onSubmit={addName}>
+//         <div>
+//           name: <input value={newName} onChange={handleNameChange} />
+//         </div>
+//         <div>number: <input /></div>
+//         <div>
+//           <button type="submit">add</button>
+//         </div>
+//       </form>
+//       {nameExists && <div>Name already exists: {newName}</div>}
+//       <h2>Numbers</h2>
+//       {/* ... */}
+//       <div>debug: {newName}</div>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+// if(snm.filter == searchName)
+// function filterNames(arr, query){
+//   return arr.filter((el) =>
+//   el.toLowerCase().includes(query.toLowerCase()))
+// }
+// console.log(filterNames(persons.name, searchName))
