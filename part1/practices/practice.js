@@ -252,3 +252,7 @@ const pets = [
 //   el.toLowerCase().includes(query.toLowerCase()))
 // }
 // console.log(filterNames(persons.name, searchName))
+
+{/* <div>
+filter shown with <input value={searchName} onChange={nameFilter}/>
+</div> */}
